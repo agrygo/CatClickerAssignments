@@ -42,7 +42,9 @@ function loadData() {
         };
 
 
-    })
+    }).error(function(e){
+        $nytElem.text('NY Times articles not available at this time');
+    });
 
 
 
