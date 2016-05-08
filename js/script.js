@@ -32,7 +32,14 @@ function loadData() {
         //set header text
         $nytHeaderElem.text('New York Times Articles About' + city);
         var articles = data.response.docs;
-        console.log(articles);
+        for (var i=0, il=articles.length; i < il; i++){
+            var article = articles[i];
+            $nytElem.append('<li class="article">'+
+                '<a href="'+article.web_url+'">'+article.headline.main+
+                    '</a>'+
+                '<p>' + article.snippet + '</p>'+
+            '</li>');
+        };
 
 
     })
