@@ -42,13 +42,18 @@ function loadData() {
     });
 
     //Wikipedia with JSONP
-    var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&titles=" + city + "&prop=revisions&rvprop=content&format=json&callback=wikiCallBack";
+    var wikiUrl = "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + city + "&format=json";
+    var wikiRequestTimeout = setTimeout(function(){
+        $wikiElem.text("Wiki fail");
+    }, 3000);
+
     //use .ajax to make call
     $.ajax({
         url: wikiUrl,
         dataType: "jsonp",
-        //type: 'GET',
-        success: function( response ) {
+        //jsonp: "callback",  //not needed as this is the default
+        //type: 'GET',  //default? yes - in jQuery docs http://api.jquery.com/jquery.ajax/
+    }).done(function( response ) {
             var articleList = response[1];
 
             for (var i=0; i < articleList.length; i++) {
@@ -56,10 +61,12 @@ function loadData() {
                 var url = "http://en.wikipedia.org/wiki/" + articleStr;
                 $wikiElem.append('<li><a href="' + url + '">' + articleStr + '</a></li>');
 
-
             };
+
+            clearTimeout(wikiRequestTimeout);
         }
-    });
+    );
+
 
 
     //loop through response and append results to page
