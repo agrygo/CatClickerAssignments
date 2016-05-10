@@ -45,7 +45,7 @@ function loadData() {
     var wikiUrl = "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + city + "&format=json";
     var wikiRequestTimeout = setTimeout(function(){
         $wikiElem.text("Wiki fail");
-    }, 3000);
+    }, 3000);    //3000 ms = 3 seconds
 
     //use .ajax to make call
     $.ajax({
@@ -63,7 +63,7 @@ function loadData() {
 
             };
 
-            clearTimeout(wikiRequestTimeout);
+            clearTimeout(wikiRequestTimeout);  //clear or won't update with wiki article links
         }
     );
 
