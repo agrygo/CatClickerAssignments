@@ -22,8 +22,7 @@
 
 $(document).ready(function(){
 	$('#catInfo').hide();
-	var clickCount1 = [];
-	var clickCount2 = [];
+	var clickCount = [];
 
 	var name = document.getElementsByTagName("li");
 
@@ -41,12 +40,18 @@ $(document).ready(function(){
 		var name = e.target.attributes.id.value;
 		console.log(name);
 		var newImg = 'images/'+ name + '.jpg';
-		console.log(newImg);
 		$('#cat-img').attr('src', newImg);
-		$('#catInfo').replaceWith();
-		console.log("Cat clicked" + e.target.attributes.id.value);
+		console.log("Cat clicked " + e.target.attributes.id.value);
 		var name = e.target.attributes.id.value;
-		$('#catInfo').replaceWith(name);
+		$('.catInfo').html(name);
+		$('.catClicks').html("");
+		clickCount = [0];
 	}
+
+	$('#cat-img').click(function(){
+		clickCount ++;
+		console.log(clickCount);
+		$('.catClicks').show().html("Click Count " + clickCount);
+	});
 
 });
