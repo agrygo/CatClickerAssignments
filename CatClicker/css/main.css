@@ -11,6 +11,11 @@
 	font-weight: bold;
 }
 
-#header, #cat, #counter {
+#header,  #counter {
 	text-align: center
+}
+
+#catInfo{
+	text-align: center;
+
 }

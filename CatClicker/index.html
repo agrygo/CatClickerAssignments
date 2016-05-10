@@ -12,11 +12,33 @@
 <body>
 	<div id="header">
 		<p class="H1">Welcome to the Cat Clicker!</p>
-		<p class="H2">Click on the cute cat to begin</p>
-		<span class="counter"></span>
+		<p class="H2">Click on a cat name to begin</p>
 	</div>
-	<div id="cat">
-		<img src="images/zule.jpg" width="600" height="450" alt="cute cat image">
+	<div id="catInfo"></div>
+	<div id="cats">
+		<!--<span class="counter1"></span>
+		<img id="zule" src="images/zule.jpg" width="600" height="450" alt="cute cat image">
+		<span class="counter2"></span>
+		<img id="grumpy" src="images/grumpy.jpg" width="600" height="450" alt="grumpy cat image">-->
+		<table>
+			<tr>
+				<td width="50%vh">
+					<!--list of cats-->
+					<ul>
+						<li id="Blacky">Blacky</li>
+						<li id="Fluffy">Fluffy</li>
+						<li id="Lazy">Lazy</li>
+						<li id="Tabby">Tabby</li>
+						<li id="Zule">Zule</li>
+					</ul>
+				</td>
+				<td></td>
+				<td>
+					<!--placeholder img-->
+					<img id="cat-img" src="http://placehold.it/300" width="300">
+				</td>
+			</tr>
+		</table>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
