@@ -4,44 +4,38 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content=" Udacity Cat Clicker ">
-    <title>Cat Clicker</title>
+	<title>Cat Clicker Premium</title>
 
-    <link rel="stylesheet" href="css/main.css">
-
+	<!-- load CSS -->
+	<link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
 	<div id="header">
-		<p class="H1">Welcome to the Cat Clicker!</p>
-		<p class="H2">Click on a cat name to begin</p>
+		<p class="h1">Welcome to the Cat Clicker!</p>
+		<p class="h2">Click on a cat name to load an image; then start clicking!</p>
 	</div>
-	<div class="catInfo"></div>
-	<div class="catClicks"></div>
-	<div id="cats">
-		<!--<span class="counter1"></span>
-		<img id="zule" src="images/zule.jpg" width="600" height="450" alt="cute cat image">
-		<span class="counter2"></span>
-		<img id="grumpy" src="images/grumpy.jpg" width="600" height="450" alt="grumpy cat image">-->
-		<table>
-			<tr>
-				<td width="50%vh">
-					<!--list of cats-->
-					<ul>
-						<li id="Blacky">Blacky</li>
-						<li id="Fluffy">Fluffy</li>
-						<li id="Lazy">Lazy</li>
-						<li id="Tabby">Tabby</li>
-						<li id="Zule">Zule</li>
-					</ul>
-				</td>
-				<td></td>
-				<td>
-					<!--placeholder img-->
-					<img id="cat-img" src="http://placehold.it/300" width="300">
-				</td>
-			</tr>
-		</table>
+	<span><h2>Cats</h2><ul id="catList"></ul></span>
+	<div id="cat">
+		<h2 id="catName"></h2>
+		<h2 id="catClicks"></h2>
+		<img id="catImg" src="" alt="cat image">  <!--leave src blank will be set based on cat name clicked -->
+	</div>
+	<div>
+		<button type="button" id="admin">Admin</button>
+		<form>
+			<label>Cat name:</label> <input type="text" name="AdminCatName"><br>
+			<label>URL:</label> <input type="text" name="AdminCatURL"><br>
+			<label>clicks:</label> <input type="text" name="AdminCatClicks">
+		</form>
+		<button type="button">Cancel</button><button>Save</button>
+
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<!-- load js -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/main.js"></script>
+	</script>
+</body>
 </html>
