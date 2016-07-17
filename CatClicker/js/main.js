@@ -48,8 +48,8 @@ var catListView = {
 	},
 
 	render: function(){
-		var cat, elem, i;
 		var cats = controller.getCats();
+		var cat, elem, i;
 		console.log (cats);
 
 		//empty cat list
@@ -160,7 +160,11 @@ var controller = {
 	showAdmin: function(){
 		console.log("in showAdmin");
 		model.adminView = True;
-		return model.adminView
+
+		if (model.adminView == True) {
+			console.log("showing admin");
+			document.getElementById("adminPanel").style.visibility = "visible";
+		}
 
 
 	}
