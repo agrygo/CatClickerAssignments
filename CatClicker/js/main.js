@@ -29,7 +29,7 @@ var model = {
 			imgSrc: "images/Zule.jpg"
 		}
 	],
-	adminView: null,
+	adminView: false,
 
 
 };
@@ -117,12 +117,23 @@ var adminView = {
 
 		})
 
+	},
+
+	render: function(){
+		console.log("in adminView.render");
+		//DOM element for admin panel
+		this.adminElem = document.getElementById("adminPanel");
+		//find state of adminView from controller
+		////STUMPED HERE
+		return model.showAdmin;
+
+		console.log(state);
+		if (model.showAdmin) {
+			console.log("showing admin");
+			adminElem.style.visibility = "visible";
+		}
 	}
 };
-
-
-
-
 
 //render fxn to display
 
@@ -159,15 +170,13 @@ var controller = {
 
 	showAdmin: function(){
 		console.log("in showAdmin");
-		model.adminView = True;
-
-		if (model.adminView == True) {
-			console.log("showing admin");
-			document.getElementById("adminPanel").style.visibility = "visible";
-		}
-
-
+		//model.adminView.True;
+		model.adminView.True;
+		adminView.render();
 	}
+
+
+
 };
 
 controller.init();
