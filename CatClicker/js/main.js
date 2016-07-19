@@ -112,7 +112,7 @@ var adminView = {
 		// show admin panel when Admin button is clicked
 		this.adminElem = document.getElementById('admin');
 		this.adminElem.addEventListener('click', function(){
-			console.log("admin clicked");
+			console.log("admin btn clicked");
 			controller.showAdmin();
 
 		})
@@ -120,17 +120,10 @@ var adminView = {
 	},
 
 	render: function(){
-		console.log("in adminView.render");
-		//DOM element for admin panel
-		this.adminElem = document.getElementById("adminPanel");
 		//find state of adminView from controller
-		////STUMPED HERE
-		return model.showAdmin;
-
-		console.log(state);
-		if (model.showAdmin) {
-			console.log("showing admin");
-			adminElem.style.visibility = "visible";
+		state = controller.getAdminState();
+		if (state) {
+			document.getElementById("adminPanel").style.visibility = "visible";
 		}
 	}
 };
@@ -169,10 +162,12 @@ var controller = {
 	},
 
 	showAdmin: function(){
-		console.log("in showAdmin");
-		//model.adminView.True;
-		model.adminView.True;
+		model.adminView = true;
 		adminView.render();
+	},
+
+	getAdminState: function(){
+		return model.adminView;
 	}
 
 
