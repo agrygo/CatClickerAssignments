@@ -117,16 +117,33 @@ var adminView = {
 		this.adminNameElem = document.getElementById('AdminCatName');
 		this.adminURLElem = document.getElementById('AdminCatURL');
 		this.adminClicksElem = document.getElementById('AdminCatClicks');
+		//admin button
 		this.adminBtnElem.addEventListener('click', function(){
 			console.log("admin btn clicked");
 			controller.showAdmin();
 		});
+		//save button
 		this.saveBtnElem.addEventListener('click', function(){
 			console.log("save btn clicked");
+			//get DOM elements for admin panel name, url, clicks
 			this.adminNameElem = document.getElementById('AdminCatName');
-			var newName = this.adminNameElem.value;
-			console.log(newName);
-			controller.updateData(newName);
+			this.adminURLElem = document.getElementById('AdminCatURL');
+			this.adminClicksElem = document.getElementById('AdminCatClicks');
+
+			//use controller to access model & update
+				// var currentCat = model.catCurrent;    (this is the same but here the view and model talk to each other)
+				// currentCat.name = this.adminNameElem.value;  (value gets the text from the form input)
+
+			var currentCat = controller.getCurrentCat();
+			currentCat.name = this.adminNameElem.value;
+			currentCat.imgSrc = this.adminURLElem.value;
+			currentCat.catCurrentClicks = this.adminClicksElem.value;
+			controller.updateData();
+		});
+		//cancel button
+		this.cancelBtnElem.addEventListener('click', function(){
+			console.log("cancel btn clickec");
+			controller.hideAdmin();
 		})
 	},
 
@@ -140,12 +157,12 @@ var adminView = {
 			this.adminNameElem.value = catData.name;
 			this.adminURLElem.value = catData.imgSrc;
 			this.adminClicksElem.value = catData.catCurrentClicks;
+		} else {
+			document.getElementById("adminPanel").style.visibility = "hidden";
 		}
+
 	},
 
-	update: function(){
-
-	}
 };
 
 //render fxn to display
@@ -190,8 +207,14 @@ var controller = {
 		return model.adminView;
 	},
 
-	updateData: function(newName){
-		model.catCurrent.name = (newName);
+	updateData: function(){
+		catImgView.render();
+		catListView.render();
+	},
+
+	hideAdmin: function(){
+		model.adminView = false;
+		adminView.render();
 	}
 
 
