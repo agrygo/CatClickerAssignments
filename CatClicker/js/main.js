@@ -101,6 +101,7 @@ var catImgView = {
 	render: function() {
 		//update cat information about current cat
 		var currentCat = controller.getCurrentCat();
+		console.log("current cat" + currentCat);
 		this.catCurrentClicks.textContent = currentCat.catCurrentClicks;
 		this.catImgElem.src = currentCat.imgSrc;
 		this.catCurrentElem.textContent = currentCat.name;
@@ -110,13 +111,23 @@ var catImgView = {
 var adminView = {
 	init: function () {
 		// show admin panel when Admin button is clicked
-		this.adminElem = document.getElementById('admin');
-		this.adminElem.addEventListener('click', function(){
+		this.adminBtnElem = document.getElementById('adminBtn');
+		this.saveBtnElem = document.getElementById('saveBtn');
+		this.cancelBtnElem = document.getElementById('cancelBtn');
+		this.adminNameElem = document.getElementById('AdminCatName');
+		this.adminURLElem = document.getElementById('AdminCatURL');
+		this.adminClicksElem = document.getElementById('AdminCatClicks');
+		this.adminBtnElem.addEventListener('click', function(){
 			console.log("admin btn clicked");
 			controller.showAdmin();
-
+		});
+		this.saveBtnElem.addEventListener('click', function(){
+			console.log("save btn clicked");
+			this.adminNameElem = document.getElementById('AdminCatName');
+			var newName = this.adminNameElem.value;
+			console.log(newName);
+			controller.updateData(newName);
 		})
-
 	},
 
 	render: function(){
@@ -124,7 +135,16 @@ var adminView = {
 		state = controller.getAdminState();
 		if (state) {
 			document.getElementById("adminPanel").style.visibility = "visible";
+			var catData = controller.getCurrentCat();
+			console.log("cat" + catData);
+			this.adminNameElem.value = catData.name;
+			this.adminURLElem.value = catData.imgSrc;
+			this.adminClicksElem.value = catData.catCurrentClicks;
 		}
+	},
+
+	update: function(){
+
 	}
 };
 
@@ -168,8 +188,11 @@ var controller = {
 
 	getAdminState: function(){
 		return model.adminView;
-	}
+	},
 
+	updateData: function(newName){
+		model.catCurrent.name = (newName);
+	}
 
 
 };
